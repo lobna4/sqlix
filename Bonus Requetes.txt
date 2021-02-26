@@ -1,0 +1,25 @@
+REQUETES
+
+1 - SELECT* FROM Potion;
+
+2 -SELECT(NomTrophee) FROM Categorie WHERE NbPoints = 3;
+
+3 - SELECT(NomVillage) FROM Village WHERE NbHuttes > 35;
+
+4 -SELECT (NumTrophee) FROM Trophee WHERE DatePrise BETWEEN' 2052-05-05 00:00:00' and' 2052-06-06 00:00:00';
+
+5 -SELECT Nom FROM Habitant WHERE Nom LIKE 'a%r%';
+
+6 -SELECT DISTINCT NumHab FROM Absorber WHERE NumPotion =1 OR NumPotion=3 OR NumPotion=4;
+
+7 -SELECT NumTrophee,DatePrise,CodeCat,NumPreneur FROM Trophee;
+
+8 - SELECT Nom FROM Habitant INNER JOIN Village ON Habitant.NumVillage=Village.NumVillage  WHERE NomVillage='AQUILONA';
+
+9 -SELECT Nom FROM Habitant INNER JOIN Trophee ON Habitant.NumHab=Trophee.NumPreneur INNER JOIN Categorie ON Categorie.CodeCat=Trophee.CodeCat WHERE NomTrophee='Bouclier de Légat';
+
+10 - SELECT LibPotion,Formule,ConstituantPrincipal FROM Potion INNER JOIN Fabriquer ON Fabriquer.NumPotion=Potion.NumPotion INNER JOIN Habitant ON Fabriquer.NumHab=Habitant.numHab WHERE Nom='Panoramix';
+
+11 - SELECT LibPotion FROM Potion INNER JOIN Absorber ON Potion.NumPotion=Absorber.NumPotion INNER JOIN Habitant ON Absorber.NumHab=Habitant.NumHab WHERE Nom='Homéopatix';
+
+12 -

@@ -1,0 +1,4 @@
+Sauvegarde
+
+C:\xampp\mysql\bin>mysqldump -u root -h localhost -p --databases mysqlix > dump_mysqlix.sql
+Enter password:

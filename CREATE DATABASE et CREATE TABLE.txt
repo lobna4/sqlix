@@ -1,0 +1,137 @@
+CREATE DATABASES mysqlix
+
+
+       Qualite
+
+CREATE TABLE Qualite (
+    -> NumQualite INT,
+    -> LibQualite VARCHAR (30),
+    -> PRIMARY KEY (NumQualite)
+    -> )
+    -> ENGINE=INNODB;
+
+--
+
+       Province
+
+CREATE TABLE Province (
+    -> NumProvince INT,
+    -> NomProvince VARCHAR (30),
+    -> NomGouverneur VARCHAR(30),
+    -> PRIMARY KEY (NumProvince)
+    -> )
+    -> ENGINE=INNODB;
+
+--
+
+       Village
+
+CREATE TABLE Village (
+    -> NumVillage INT,
+    -> NomVillage VARCHAR (30),
+    -> Nb_Huttes INT,
+    -> NumProvince INT,
+    -> PRIMARY KEY (NumVillage),
+    -> FOREIGN KEY (NumProvince) REFERENCES Province (NumProvince)
+    -> )
+    -> ENGINE=INNODB;
+
+--
+
+       Habitant
+
+CREATE TABLE Habitant (
+    -> NumHab INT,
+    -> Nom VARCHAR (30),
+    -> Age INT,
+    -> NumQualite INT,
+    -> NumVillage INT,
+    -> PRIMARY KEY (NumHab),
+    -> FOREIGN KEY (NumQualite) REFERENCES Qualite (NumQualite),
+    -> FOREIGN KEY (NumVillage) REFERENCES Village (NumVillage)
+    -> )
+    -> ENGINE=INNODB;
+
+--
+       Resserre
+
+CREATE TABLE Resserre (
+    -> NumResserre INT,
+    -> NomResserre VARCHAR (30),
+    -> Superficie INT,
+    -> NumVillage INT,
+    -> PRIMARY KEY (NumResserre),
+    -> FOREIGN KEY (NumVillage) REFERENCES Village (NumVillage)
+    -> )
+    -> ENGINE=INNODB;
+
+--
+       Categorie
+
+CREATE TABLE Categorie (
+    -> CodeCat CHAR (3),
+    -> NomTrophee VARCHAR (50),
+    -> NbPoints INT,
+    -> PRIMARY KEY (CodeCat)
+    -> )
+    -> ENGINE=INNODB;
+
+--
+       
+       Trophee
+
+CREATE TABLE Trophee (
+    -> NumTrophee INT,
+    -> DatePrise DATETIME,
+    -> CodeCat CHAR (3),
+    -> NumPreneur INT,
+    -> NumResserre INT,
+    -> PRIMARY KEY (NumTrophee),
+    -> FOREIGN KEY (CodeCat) REFERENCES Categorie (CodeCat),
+    -> FOREIGN KEY (NumPreneur) REFERENCES Habitant (NumHab),
+    -> FOREIGN KEY (NumResserre) REFERENCES Resserre (NumResserre)
+    -> )
+    -> ENGINE=INNODB;
+
+--
+
+       Potion
+
+CREATE TABLE Potion (
+    -> NumPotion INT,
+    -> LibPotion VARCHAR (40),
+    -> Formule VARCHAR (30),
+    -> ConstituantPrincipal VARCHAR (30),
+    -> PRIMARY KEY (NumPotion)
+    -> )
+    -> ENGINE=INNODB;
+
+--
+
+       Fabriquer
+    
+ CREATE TABLE Fabriquer (
+    -> NumPotion INT,
+    -> NumHab INT,
+    -> PRIMARY KEY (NumPotion, NumHab),
+    -> FOREIGN KEY (NumPotion) REFERENCES Potion (NumPotion),
+    -> FOREIGN KEY (NumPotion) REFERENCES Habitant (NumHab)
+    -> )
+    -> ENGINE=INNODB;
+
+--
+
+       Absorber
+
+CREATE TABLE Absorber (
+    -> NumPotion INT,
+    -> DateA DATETIME,
+    -> NumHab INT,
+    -> Quantite INT,
+    -> PRIMARY KEY (NumPotion, DateA, NumHab),
+    -> FOREIGN KEY (NumPotion) REFERENCES Potion (NumPotion),
+    -> FOREIGN KEY (NumHab) REFERENCES Habitant (NumHab)
+    -> )
+    -> ENGINE=INNODB;
+
+

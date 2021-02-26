@@ -1,0 +1,61 @@
+REQUETES
+
+1 - SELECT* FROM Potion;
+
+2 -SELECT(NomTrophee) FROM Categorie WHERE NbPoints = 3;
+
+3 - SELECT(NomVillage) FROM Village WHERE NbHuttes > 35;
+
+4 -SELECT (NumTrophee) FROM Trophee WHERE DatePrise BETWEEN' 2052-05-05 00:00:00' and' 2052-06-06 00:00:00';
+
+5 -SELECT Nom FROM Habitant WHERE Nom LIKE 'a%r%';
+
+6 -SELECT DISTINCT NumHab FROM Absorber WHERE NumPotion =1 OR NumPotion=3 OR NumPotion=4;
+
+7 -SELECT NumTrophee,DatePrise,CodeCat,NumPreneur FROM Trophee;
+
+8 - SELECT Nom FROM Habitant INNER JOIN Village ON Habitant.NumVillage=Village.NumVillage  WHERE NomVillage='AQUILONA';
+
+9 -SELECT Nom FROM Habitant INNER JOIN Trophee ON Habitant.NumHab=Trophee.NumPreneur INNER JOIN Categorie ON Categorie.CodeCat=Trophee.CodeCat WHERE NomTrophee='Bouclier de Légat';
+
+10 - SELECT LibPotion,Formule,ConstituantPrincipal FROM Potion INNER JOIN Fabriquer ON Fabriquer.NumPotion=Potion.NumPotion INNER JOIN Habitant ON Fabriquer.NumHab=Habitant.numHab WHERE Nom='Panoramix';
+
+11 - SELECT LibPotion FROM Potion INNER JOIN Absorber ON Potion.NumPotion=Absorber.NumPotion INNER JOIN Habitant ON Absorber.NumHab=Habitant.NumHab WHERE Nom='Homéopatix';
+
+12 -SELECT Nom FROM Habitant INNER JOIN Absorber ON Absorber.NumHab=Habitant.NumHab INNER JOIN Fabriquer ON Fabriquer.NumPotion=Absorber.NumPotion WHERE Fabriquer.NumHab=3 GROUP BY Nom;
+
+13 -SELECT Habitant.Nom FROM Absorber INNER JOIN Fabriquer ON Absorber.NumPotion=Fabriquer.NumPotion INNER JOIN Habitant Amnesix ON Amnesix.NumHab=Fabriquer.NumHab INNER JOIN Habitant ON Habitant.NumHab=Absorber.NumHab WHERE Amnesix.Nom='Amnésix' GROUP BY Nom;
+
+14 -SELECT Nom FROM Habitant WHERE Habitant.NumQualite IS NULL;*
+
+15 - SELECT Nom FROM Habitant INNER JOIN Absorber ON Habitant.NumHab=Absorber.NumHab INNER JOIN Potion ON Absorber.NumPotion=Potion.NumPotion WHERE DateA LIKE '2052-02-%'AND Potion.NumPotion=1 ;
+
+16 -SELECT Nom,Age FROM Habitant GROUP BY Nom;
+
+17 - SELECT Village.NomVillage,Resserre.NomResserre FROM Village INNER JOIN Resserre ON Village.NumVillage=Resserre.NumVillage GROUP BY Village.NomVillage ASC;
+
+18 - SELECT COUNT(NbHuttes) FROM Village INNER JOIN Habitant ON Habitant.NumVillage=Village.NumVillage WHERE Village.NumVillage=5 ;
+
+19 - SELECT SUM(NbPoints) FROM Categorie INNER JOIN Trophee ON Categorie.CodeCat=Trophee.CodeCat INNER JOIN Habitant ON Trophee.NumPreneur=Habitant.NumHab WHERE Habitant.Nom='Goudurix';
+
+20 -SELECT Min(DatePrise) FROM Trophee;
+
+21 -SELECT SUM(Quantite) FROM Absorber INNER JOIN Potion ON Absorber.NumPotion=Potion.NumPotion WHERE Potion.LibPotion='Potion magique n°2';
+
+22 -SELECT MAX(Superficie) FROM Resserre;
+
+23 -SELECT NomVillage,NbHuttes FROM Village;
+
+24 -
+
+25 - SELECT Province.NomProvince,AVG(Age) FROM Habitant INNER JOIN Village ON Habitant.NumVillage=Village.NumVillage INNER JOIN Province ON Village.NumProvince=Province.NumProvince GROUP BY Province.NomProvince;
+
+26 - SELECT Habitant.Nom,COUNT(NumPotion) FROM Absorber INNER JOIN Habitant ON Absorber.NumHab=Habitant.NumHab GROUP BY Habitant.Nom;
+
+27 - SELECT Nom FROM Habitant INNER JOIN Absorber ON Habitant.NumHab=Absorber.NumHab INNER JOIN Potion ON Absorber.NumPotion=Potion.NumPotion WHERE LibPotion='Potion Zen'GROUP BY Absorber.Quantite >1;
+
+28 - SELECT NomVillage FROM Village INNER JOIN Resserre ON Village.NumVillage=Resserre.NumVillage GROUP BY NomVillage;
+
+29 - SELECT NomVillage,NbHuttes FROM Village ORDER BY NbHuttes DESC LIMIT 1;
+
+30 -

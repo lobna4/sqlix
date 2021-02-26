@@ -1,0 +1,3 @@
+CREATE USER 'sqlix_u'@'localhost' IDENTIFIED BY 'Lobna';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON mysqlix.*TO 'sqlix'@'localhost';

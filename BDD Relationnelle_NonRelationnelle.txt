@@ -1,0 +1,9 @@
+
+Une Bases de Données se chargent elles-mêmes de créer, de mettre à jour ou de supprimer des données. Elles effectuent également des recherches parmi les données qu’elles contiennent sur demande de l’utilisateur, et de lancer des applications à partir des données.
+
+La différence qui existe entre une base de données relationnelle et une base de données non relationnelle est la façon de stocker.
+L’une stocke les données dans des tables tandis que l’autre les stockent au format clé-valeur de manière à stocker davantage en termes de quantité.
+
+Les bases de données relationnelles stocke les ensembles de données de manière « relationnelle ». Elles mettent en relation les données. Concrètement, cela passe par l’organisation des données en tableaux ou tables fonctionnant comme des matrices à deux dimensions : les colonnes et les lignes. Les cellules correspondent aux intersections entre les colonnes et les lignes.
+ 
+Il est donc préférable pour le village d'SQLIX d'utiliser la base de données relationnelle puisqu'on utilise des tables (colonnes Ligne) reliées entres elles (avec des Foreign Key).
